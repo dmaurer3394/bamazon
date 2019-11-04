@@ -79,22 +79,6 @@ function managerShop() {
     makeShoppingArray(res, shoppingArray);
     makeTableArray(shoppingArray);
     manager();
-    // inquirer
-    //   .prompt([
-    //     {
-    //       type: "confirm",
-    //       name: "confirm",
-    //       message: "Do you want to purchase something?",
-    //       default: true
-    //     }
-    //   ])
-    //   .then(function(result) {
-    //     if (result.confirm) {
-    //       promptUser(res);
-    //     } else {
-    //       manager();
-    //     }
-    //   });
   });
 }
 
@@ -182,7 +166,7 @@ function manager() {
       {
         type: "list",
         name: "managerChoice",
-        message: "Choose an option\n",
+        message: "\nChoose an option\n",
         choices: [
           new inquirer.Separator(),
           "View Inventory",
@@ -221,7 +205,7 @@ function manager() {
 
 function viewLowInventory() {
   var query = connection.query(
-    "SELECT * FROM products WHERE stock_quantity < 10",
+    "SELECT * FROM products WHERE stock_quantity < 20",
     function(err, res) {
       if (err) throw err;
 
